@@ -9,4 +9,12 @@ for (i in 1:nlevels(prob)){
   svg[i] = s[i]/length(idx)
 }
 x <- mean(svg)
-idx1 <- which(svg > x & sc < 40)
+#idx1 <- which(svg > x & sc < 40)
+count <- vector()
+for (i in 1:nlevels(prob)) {
+  idx <- which(prob == i)
+  idx1 <- which(tot[idx] > x & s_avg[idx] < 40)
+  count[i] = length(idx1)
+  
+}
+print(which(count >= 3))
